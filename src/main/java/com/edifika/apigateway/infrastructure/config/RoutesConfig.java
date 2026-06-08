@@ -63,7 +63,12 @@ public class RoutesConfig {
                 .route("reservation-reservations", r -> r
                         .path("/api/v1/reservations/**")
                         .uri(reservationServiceUrl))
-
+                .route("reservation-common-areas", r -> r
+                        .path("/api/v1/common-areas/**")
+                        .uri(reservationServiceUrl))
+                .route("reservation-reservations", r -> r
+                        .path("/api/v1/reservations/**")
+                        .uri(reservationServiceUrl))
 
                 /* Communication Service
                 .route("communication-announcements", r -> r
