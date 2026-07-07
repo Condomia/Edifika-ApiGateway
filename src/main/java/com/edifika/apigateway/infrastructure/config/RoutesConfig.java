@@ -23,21 +23,14 @@ public class RoutesConfig {
     @Value("${services.reservation.url}")
     private String reservationServiceUrl;
 
-   /*
-
     @Value("${services.payment.url}")
     private String paymentServiceUrl;
 
     @Value("${services.communication.url}")
     private String communicationServiceUrl;
 
-    @Value("${services.report.url}")
-    private String reportServiceUrl;
-
-    @Value("${services.notification.url}")
-    private String notificationServiceUrl;
-
-    */
+    @Value("${services.forum.url}")
+    private String forumServiceUrl;
 
     @Bean
     public RouteLocator edifikaRoutes(RouteLocatorBuilder builder) {
@@ -60,9 +53,6 @@ public class RoutesConfig {
                         .uri(residentialServiceUrl))
 
                 // Reservation Service
-                .route("reservation-reservations", r -> r
-                        .path("/api/v1/reservations/**")
-                        .uri(reservationServiceUrl))
                 .route("reservation-common-areas", r -> r
                         .path("/api/v1/common-areas/**")
                         .uri(reservationServiceUrl))
@@ -70,33 +60,21 @@ public class RoutesConfig {
                         .path("/api/v1/reservations/**")
                         .uri(reservationServiceUrl))
 
-                /* Communication Service
-                .route("communication-announcements", r -> r
-                        .path("/api/v1/announcements/**")
-                        .uri(communicationServiceUrl))
-                .route("communication-surveys", r -> r
-                        .path("/api/v1/surveys/**")
-                        .uri(communicationServiceUrl))
-
-                // Report Service
-                .route("report-service", r -> r
-                        .path("/api/v1/reports/**")
-                        .uri(reportServiceUrl))
-
-                // Notification Service
-                 .route("notification-service", r -> r
-                        .path("/api/v1/notifications/**")
-                        .uri(notificationServiceUrl))
-
                 // Payment Service
-                .route("payment-debts", r -> r
-                        .path("/api/v1/debts/**")
-                        .uri(paymentServiceUrl))
                 .route("payment-payments", r -> r
                         .path("/api/v1/payments/**")
                         .uri(paymentServiceUrl))
 
-                        */
+                // Communication Service
+                .route("communication-announcements", r -> r
+                        .path("/api/v1/announcements/**")
+                        .uri(communicationServiceUrl))
+
+                // Forum Service
+                .route("forum-posts", r -> r
+                        .path("/api/v1/posts/**")
+                        .uri(forumServiceUrl))
+
                 .build();
     }
 }
