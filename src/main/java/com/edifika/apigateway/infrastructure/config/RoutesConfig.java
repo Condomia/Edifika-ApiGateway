@@ -86,6 +86,10 @@ public class RoutesConfig {
                 .route("notification-service", r -> r
                         .path("/api/v1/notifications/**")
                         .uri(notificationServiceUrl))
+                
+                .route("notification-device", r -> r
+                        .path("/api/v1/device-tokens/**")
+                        .uri(notificationServiceUrl))
 
                 // Report Service
                 .route("reports-service", r -> r
