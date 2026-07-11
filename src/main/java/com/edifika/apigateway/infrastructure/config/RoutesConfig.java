@@ -32,6 +32,13 @@ public class RoutesConfig {
     @Value("${services.forum.url}")
     private String forumServiceUrl;
 
+    @Value("${services.notification.url}")
+    private String notificationServiceUrl;
+
+    @Value("${services.report.url}")
+    private String reportServiceUrl;
+
+
     @Bean
     public RouteLocator edifikaRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
@@ -75,6 +82,15 @@ public class RoutesConfig {
                         .path("/api/v1/posts/**")
                         .uri(forumServiceUrl))
 
+                // Notification service
+                .route("notification-service", r -> r
+                        .path("/api/v1/notifications/**")
+                        .uri(notificationServiceUrl))
+
+                // Report Service
+                .route("reports-service", r -> r
+                        .path("/api/v1/reports/**")
+                        .uri(reportServiceUrl))
                 .build();
     }
 }
